@@ -145,15 +145,17 @@ def plot_data_level(data_dict):
 
     print(max(level_list))
 
+    p1, p2, p3, p4 = None, None, None, None
+
     for x_i, y_i, l_i in zip(x, y, level_list):
         if 1 <= l_i < 2:
-            plt.scatter(x_i, y_i, marker='o', color='', edgecolors='k', s=10)
+            p1 = plt.scatter(x_i, y_i, marker='o', color='', edgecolors='k', s=10)
         elif 2 <= l_i < 3:
-            plt.scatter(x_i, y_i, marker='o', color='', edgecolors='k', s=40)
+            p2 = plt.scatter(x_i, y_i, marker='o', color='', edgecolors='k', s=35)
         elif 3 <= l_i < 4:
-            plt.scatter(x_i, y_i, marker='o', color='', edgecolors='k', s=150)
+            p3 = plt.scatter(x_i, y_i, marker='o', color='', edgecolors='k', s=100)
         elif 4 <= l_i < 5:
-            plt.scatter(x_i, y_i, marker='o', color='', edgecolors='k', s=350)
+            p4 = plt.scatter(x_i, y_i, marker='o', color='', edgecolors='k', s=260)
         else:
             raise ValueError('error level value')
 
@@ -169,6 +171,8 @@ def plot_data_level(data_dict):
     # plt.xticks(range(len(x)), x, rotation=90, fontsize=8)
     #
     # plt.scatter(range(len(x)), y, s=10)
+
+    plt.legend([p4, p3, p2, p1], ['ML ∈ [4, 5)', 'ML ∈ [3, 4)', 'ML ∈ [2, 3)', 'ML ∈ [1, 2)'], loc='best')
 
     plt.savefig('plot2.png', dpi=100)  # 指定分辨率保存
     plt.show()
